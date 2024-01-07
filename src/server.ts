@@ -1,11 +1,17 @@
 import { app } from "./app";
 import { env } from "./env";
 
-app
-  .listen({
+app.listen(
+  {
     host: "0.0.0.0",
     port: env.PORT,
-  })
-  .then(() => {
-    console.log(`Server is runing on localhost:${env.PORT}`);
-  });
+  },
+  function (err, address) {
+    if (err) {
+      console.error(`Error on start server ==> ${err}`);
+      process.exit(1);
+    }
+
+    console.log(`Server is running on localhost:${env.PORT}`);
+  },
+);
