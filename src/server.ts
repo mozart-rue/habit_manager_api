@@ -12,6 +12,6 @@ app.listen(
       process.exit(1);
     }
 
-    console.log(`Server is running on localhost:${env.PORT}`);
+    console.info(`Server is running on ${address}`);
   },
 );
