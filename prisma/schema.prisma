@@ -21,7 +21,8 @@ model User {
 
 model Habit {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  title        String
+  goal_name    String
+  habit_name   String
   user_id      String   @db.ObjectId
   done         Boolean  @default(false)
   frequency    String
