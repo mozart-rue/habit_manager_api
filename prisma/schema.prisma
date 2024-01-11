@@ -30,5 +30,14 @@ model Habit {
   period_end   DateTime
   created_at   DateTime @default(now())
 
-  user User @relation(fields: [user_id], references: [id])
+  user     User       @relation(fields: [user_id], references: [id])
+  historic Historic[]
+}
+
+model Historic {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  habit_id String   @db.ObjectId
+  date     DateTime
+
+  habit Habit @relation(fields: [habit_id], references: [id])
 }
