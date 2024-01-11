@@ -6,7 +6,7 @@ interface TopHabitsUseCaseRequest {
 }
 
 interface TopHabitsUseCaseResponse {
-  habits: Habit[];
+  habits: HabitHistory[];
 }
 
 export class TopHabitsUseCase {
