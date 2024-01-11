@@ -7,7 +7,7 @@ export async function topHabitsAndGoals(
 ) {
   const topHabitsUseCase = makeTopHabitsUseCase();
 
-  const habits = await topHabitsUseCase.execute({
+  const { habits } = await topHabitsUseCase.execute({
     userId: request.user.sub,
   });
 
