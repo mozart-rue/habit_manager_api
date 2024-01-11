@@ -6,9 +6,10 @@ export class PrismaHabitRepository implements HabitRepository {
     const habits = await prisma.habit.findMany({
       where: {
         user_id: userId,
-        period_end: {
-          gte: new Date(),
-        },
+        period_end: { gte: new Date() },
+      },
+      include: {
+        historic: true,
       },
       take: 3,
     });
