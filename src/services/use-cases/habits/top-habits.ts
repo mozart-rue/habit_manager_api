@@ -1,4 +1,3 @@
-import { Habit } from "@prisma/client";
 import { HabitRepository } from "../../../repositories/habit-repository";
 
 interface TopHabitsUseCaseRequest {
