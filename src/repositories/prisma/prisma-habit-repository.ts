@@ -2,6 +2,21 @@ import { HabitRepository } from "../habit-repository";
 import { prisma } from "../../lib/prisma";
 
 export class PrismaHabitRepository implements HabitRepository {
+  async save(data: CreateHabit) {
+    const habit = await prisma.habit.create({
+      data: {
+        goal_name: data.goal_name,
+        habit_name: data.habit_name,
+        frequency: data.frequency,
+        period_start: data.period_start,
+        period_end: data.period_end,
+        user_id: data.user_id,
+      },
+    });
+
+    return habit;
+  }
+
   async fetchTopThreeDailyHabits(userId: string) {
     const habits = await prisma.habit.findMany({
       where: {
