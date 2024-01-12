@@ -17,6 +17,17 @@ export class PrismaHabitRepository implements HabitRepository {
     return habit;
   }
 
+  async findById(userId: string, habitId: string) {
+    const habit = await prisma.habit.findFirst({
+      where: {
+        user_id: userId,
+        id: habitId,
+      },
+    });
+
+    return habit;
+  }
+
   async fetchAll(userId: string) {
     const habits = prisma.habit.findMany({
       where: {
