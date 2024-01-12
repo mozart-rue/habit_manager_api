@@ -15,4 +15,13 @@ declare global {
     created_at: Date;
     historic: Historic[];
   };
+
+  interface CreateHabit {
+    goal_name: string;
+    habit_name: string;
+    user_id: string;
+    frequency: string;
+    period_start: Date;
+    period_end: Date;
+  }
 }
