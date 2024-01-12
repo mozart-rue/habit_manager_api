@@ -28,6 +28,15 @@ export class PrismaHabitRepository implements HabitRepository {
     return habit;
   }
 
+  async remove(userId: string, habitId: string) {
+    await prisma.habit.delete({
+      where: {
+        id: habitId,
+        user_id: userId,
+      },
+    });
+  }
+
   async edit({
     userId,
     habitId,
