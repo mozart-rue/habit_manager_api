@@ -1,4 +1,4 @@
-import { HabitRepository } from "../habit-repository";
+import { HabitRepository, UpdateHabit } from "../habit-repository";
 import { prisma } from "../../lib/prisma";
 
 export class PrismaHabitRepository implements HabitRepository {
@@ -22,6 +22,29 @@ export class PrismaHabitRepository implements HabitRepository {
       where: {
         user_id: userId,
         id: habitId,
+      },
+    });
+
+    return habit;
+  }
+
+  async edit({
+    userId,
+    habitId,
+    goal_name,
+    habit_name,
+    frequency,
+    period_end,
+  }: UpdateHabit) {
+    const habit = await prisma.habit.update({
+      where: {
+        id: habitId,
+      },
+      data: {
+        goal_name,
+        habit_name,
+        frequency,
+        period_end,
       },
     });
 
